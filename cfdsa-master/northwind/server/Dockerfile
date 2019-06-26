@@ -2,7 +2,9 @@
 FROM node:latest
 
 #define env variable
-ENV DB_HOST=nwDB DB_PORT=3306 DB_USER=root DB_PASSWORD=changeit APP_PORT=3000 APP_DIR=/dataApp
+ENV DB_HOST=nwdb DB_PORT=3306 \
+    DB_USER=root DB_PASSWORD=changeit \
+    APP_PORT=3000 APP_DIR=/dataApp
 
 #create APP_DIR, and cd inside
 WORKDIR ${APP_DIR}

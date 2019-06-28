@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 
 metadata:
-  name: fapp-gateway
+  name: weatherapp-gateway
 
 spec:
   selector: 
@@ -13,5 +13,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - fapp.139.59.218.126.nip.io
-
+    - weather.139.59.218.126.nip.io

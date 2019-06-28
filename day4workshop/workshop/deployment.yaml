@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  fortuneapp
+  labels:
+    name:  fortuneapp
+spec:
+  replicas: 1
+  selector:
+      matchLabels:
+         name: fortuneapp
+  template:
+    metadata:
+      labels:
+        name:  fortuneapp
+    spec:
+      containers:
+      - image: honght0068/fortune:v1
+        name:  fortuneapp
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "55M"
+        ports:
+        - containerPort:  3000
+          name:  fortuneport
+        imagePullPolicy: Always
+      restartPolicy: Always 
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+   name: fortuneapp-svc
+   namespace: workshop02
+   labels:
+      name: fortuneapp-svc
+
+spec:
+   type: ClusterIP
+   selector:
+      name: fortuneapp
+   ports:
+   - name: fortune-svc-port
+     port: 80
+     targetPort: 3000
